@@ -5,11 +5,12 @@ interface UserRequest {
     name: string,
     email: string,
     cpf: string,
-    password: string
+    password: string,
+    isAdmin: boolean
 }
 
 class CreateUserService {
-    async execute({name, email, cpf, password}: UserRequest) {
+    async execute({name, email, cpf, password, isAdmin}: UserRequest) {
 
         if(!cpf) {
             throw new Error("CPF Incorrect");
@@ -32,7 +33,8 @@ class CreateUserService {
                 name: name,
                 email: email,
                 cpf: cpf,
-                password: passwordHash
+                password: passwordHash,
+                isAdmin: isAdmin
             }, 
             select: {
                 id: true,
