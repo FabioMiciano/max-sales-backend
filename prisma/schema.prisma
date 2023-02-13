@@ -9,3 +9,71 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id String @id @default(uuid())
+  name String
+  email String?
+  cpf String
+  password String
+  isAdmin Boolean @default(false)
+
+  created_at DateTime? @default(now())
+  update_at DateTime? @default(now())
+
+  @@map("users")
+  purchase Purchase[]
+}
+
+model Category {
+  id String @id @default(uuid())
+  title String
+  info String
+  type String
+  link_type String
+  link_action String
+  image String?
+
+  created_at DateTime? @default(now())
+  update_at DateTime? @default(now())
+
+  @@map("category")
+
+  purchase Purchase[]
+  product Product[]
+}
+
+model Product {
+  id String @id @default(uuid())
+  title String
+  info String
+  type String
+  link_type String
+  link_action String
+  image String?
+
+  created_at DateTime? @default(now())
+  update_at DateTime? @default(now())
+
+  @@map("products")
+  
+  category Category @relation(fields: [category_id], references: [id])
+
+  category_id String
+  
+}
+
+model Purchase {
+  id String @id @default(uuid())
+
+  created_at DateTime? @default(now())
+  update_at DateTime? @default(now())
+
+  @@map("purchases")
+
+  user User @relation(fields: [user_id], references: [id])
+  category Category @relation(fields: [category_id], references: [id])
+
+  user_id String
+  category_id String
+}
