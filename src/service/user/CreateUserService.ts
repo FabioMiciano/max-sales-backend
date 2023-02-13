@@ -6,11 +6,22 @@ interface UserRequest {
     email: string,
     cpf: string,
     password: string,
-    isAdmin: boolean
+    isAdmin: boolean,
+    requester_id: string
 }
 
 class CreateUserService {
-    async execute({name, email, cpf, password, isAdmin}: UserRequest) {
+    async execute({name, email, cpf, password, isAdmin, requester_id}: UserRequest) {
+
+        const requesterUser = await prismaClient.user.findFirst({
+            where: {
+                id: requester_id
+            }
+        })
+
+        if(!requesterUser.isAdmin) {
+            throw new Error("Only Admin do this");
+        }
 
         if(!cpf) {
             throw new Error("CPF Incorrect");

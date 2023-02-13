@@ -21,7 +21,7 @@ const router = Router();
 // -- USER ROTES --
 router.get('/all/users', isAuthenticated, new AllUserController().handle);
 router.get('/users', isAuthenticated, new GetUserController().handle);
-router.post('/users', new CreateUserController().handle);
+router.post('/users', isAuthenticated, new CreateUserController().handle);
 router.put('/users', isAuthenticated, new UpdateUserController().handle);
 router.put('/admin/users', isAuthenticated, new UpdateUserByAdminController().handle);
 router.delete('/users', isAuthenticated, new DeleteUserController().handle);
