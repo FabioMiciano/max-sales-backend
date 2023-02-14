@@ -20,11 +20,12 @@ import { DeleteCategoryController } from './controller/category/DeleteCategoryCo
 import { GetAllCategoryController } from './controller/category/GetAllCategoryController';
 import { UpdateCategoryController } from './controller/category/UpdateCategoryController';
 
+// -- IMPORT PRODUCTS --
+
 import multer from 'multer';
 import uploadConfing from './config/multer';
 
 const router = Router();
-
 const upload = multer(uploadConfing.upload("./tmp"));
 
 // -- USER ROTES --
@@ -42,6 +43,8 @@ router.post('/session', new AuthUserController().handle);
 router.get('/categories', isAuthenticated, new GetAllCategoryController().handle);
 router.post('/categories', upload.single('file'), isAuthenticated, new CreateCategoryController().handle);
 router.put('/categories', isAuthenticated, new UpdateCategoryController().handle);
-router.delete('categories', isAuthenticated, new DeleteCategoryController().handle);
+router.delete('/categories', isAuthenticated, new DeleteCategoryController().handle);
+
+// -- PRODUCTS ROTES --
 
 export { router };
