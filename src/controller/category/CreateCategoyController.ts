@@ -3,7 +3,7 @@ import { CreateCategoryService } from '../../service/category/CreateCategoryServ
 
 class CreateCategoryController {
     async handle(req: Request, res: Response) {
-        const { title, info, image } = req.body
+        const { title, info, type, link_type, link_action, image } = req.body
 
         if(!req.file) {
             throw new Error("Image Product Incorrect");
@@ -14,6 +14,9 @@ class CreateCategoryController {
             const user = await service.execute({ 
                 title,
                 info,
+                type,
+                link_type,
+                link_action,
                 image
             });
     

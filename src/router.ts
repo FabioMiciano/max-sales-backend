@@ -26,6 +26,14 @@ import { DeleteProductController } from './controller/product/DeleteProductContr
 import { GetAllProductsController } from './controller/product/GetAllProductsController';
 import { UpdateProductController } from './controller/product/UpdateProductController';
 
+// -- IMPORT PURCHASES --
+import { CreatePurchaseController } from './controller/purchase/CreatePurchaseController';
+import { DeletePurchaseController } from './controller/purchase/DeletePurchaseController';
+import { GetAllPurchasesController } from './controller/purchase/GetAllPurchasesController';
+
+// -- IMPORT SERVER DRIVEN UI --
+import { GetPurchaseByUserController } from './controller/purchase/GetPurchaseByUserController';
+
 import multer from 'multer';
 import uploadConfing from './config/multer';
 
@@ -55,5 +63,12 @@ router.post('/products', upload.single('file'), isAuthenticated, new CreateProdu
 router.put('/products', isAuthenticated, new UpdateProductController().handle);
 router.delete('/products', isAuthenticated, new DeleteProductController().handle);
 
+// -- PRUCHASE ROTES --
+router.get('/purchases', isAuthenticated, new GetAllPurchasesController().handle);
+router.post('/purchases', isAuthenticated, new CreatePurchaseController().handle);
+router.delete('/purchases', isAuthenticated, new DeletePurchaseController().handle);
+
+// -- SERVER DRIVEN UI  ROTES --
+router.get('/home', isAuthenticated, new GetPurchaseByUserController().handle);
 
 export { router };

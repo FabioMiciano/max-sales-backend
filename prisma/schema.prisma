@@ -29,6 +29,9 @@ model Category {
   id String @id @default(uuid())
   title String
   info String
+  type String
+  link_type String @default("")
+  link_action String  @default("")
   image String?
 
   created_at DateTime? @default(now())
@@ -45,8 +48,8 @@ model Product {
   title String
   info String
   type String
-  link_type String
-  link_action String
+  link_type String @default("")
+  link_action String @default("")
   image String?
 
   created_at DateTime? @default(now())
@@ -57,7 +60,6 @@ model Product {
   category Category @relation(fields: [category_id], references: [id])
 
   category_id String
-  
 }
 
 model Purchase {

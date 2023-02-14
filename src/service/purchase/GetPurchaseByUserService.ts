@@ -1,10 +1,6 @@
 import { Category } from '@prisma/client';
 import prismaClient from '../../../prisma';
 
-// interface FindedProduct {
-//     image: string;
-// }
-
 class GetPurchaseByUserService {
     async execute(user_id: string) {
 
@@ -23,7 +19,10 @@ class GetPurchaseByUserService {
                 const finalObject = {
                     id: finded?.category.id, 
                     title: finded?.category.title, 
-                    info: finded?.category.info, 
+                    info: finded?.category.info,
+                    type: finded?.category.type, 
+                    link_type: finded?.category.link_type, 
+                    link_action: finded?.category.link_action,
                     image: finded?.category.image, 
                     available: true
                 }
@@ -48,7 +47,10 @@ class GetPurchaseByUserService {
             return { 
                 id: value.id, 
                 title: value.title, 
-                info: value.info, 
+                info: value.info,
+                type: value.type, 
+                link_type: value.link_type, 
+                link_action: value.link_action,
                 image: value.image, 
                 available: false
             }
@@ -69,6 +71,9 @@ class GetPurchaseByUserService {
                 id: true,
                 title: true,
                 info: true,
+                type: true,
+                link_type: true,
+                link_action: true,
                 image: true
             }
         });
