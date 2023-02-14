@@ -14,6 +14,12 @@ import { UpdateUserByAdminController } from './controller/user/UpdateUserByAdmin
 import { UpdateUserController } from './controller/user/UpdateUserController';
 import { DeleteUserController } from './controller/user/DeleteUserController';
 
+// -- IMPORT CATEGORIES --
+import { CreateCategoryController } from './controller/category/CreateCategoyController';
+import { DeleteCategoryController } from './controller/category/DeleteCategoryController';
+import { GetAllCategoryController } from './controller/category/GetAllCategoryController';
+import { UpdateCategoryController } from './controller/category/UpdateCategoryController';
+
 import multer from 'multer';
 import uploadConfing from './config/multer';
 
@@ -32,7 +38,10 @@ router.delete('/users', isAuthenticated, new DeleteUserController().handle);
 // -- AUTH LOGIN -- 
 router.post('/session', new AuthUserController().handle);
 
-// -- CATEGORY ROTES --
-
+// -- CATEGORIES ROTES --
+router.get('/categories', isAuthenticated, new GetAllCategoryController().handle);
+router.post('/categories', upload.single('file'), isAuthenticated, new CreateCategoryController().handle);
+router.put('/categories', isAuthenticated, new UpdateCategoryController().handle);
+router.delete('categories', isAuthenticated, new DeleteCategoryController().handle);
 
 export { router };
