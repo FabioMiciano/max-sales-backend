@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 import { GetAllProductsService } from '../../service/product/GetAllProductsService'
 
-class GetAllProductController {
+class GetAllProductsController {
     async handle(res: Request, req: Response) {
 
         const getAllProductService = new GetAllProductsService();
@@ -12,4 +12,4 @@ class GetAllProductController {
     }
 }
 
-export { GetAllProductController }
+export { GetAllProductsController }

@@ -21,6 +21,10 @@ import { GetAllCategoryController } from './controller/category/GetAllCategoryCo
 import { UpdateCategoryController } from './controller/category/UpdateCategoryController';
 
 // -- IMPORT PRODUCTS --
+import { CreateProductController } from './controller/product/CreateProductController';
+import { DeleteProductController } from './controller/product/DeleteProductController';
+import { GetAllProductsController } from './controller/product/GetAllProductsController';
+import { UpdateProductController } from './controller/product/UpdateProductController';
 
 import multer from 'multer';
 import uploadConfing from './config/multer';
@@ -46,5 +50,10 @@ router.put('/categories', isAuthenticated, new UpdateCategoryController().handle
 router.delete('/categories', isAuthenticated, new DeleteCategoryController().handle);
 
 // -- PRODUCTS ROTES --
+router.get('/products', isAuthenticated, new GetAllProductsController().handle);
+router.post('/products', upload.single('file'), isAuthenticated, new CreateProductController().handle);
+router.put('/products', isAuthenticated, new UpdateProductController().handle);
+router.delete('/products', isAuthenticated, new DeleteProductController().handle);
+
 
 export { router };
