@@ -15,8 +15,11 @@ import { UpdateUserController } from './controller/user/UpdateUserController';
 import { DeleteUserController } from './controller/user/DeleteUserController';
 
 import multer from 'multer';
+import uploadConfing from './config/multer';
 
 const router = Router();
+
+const upload = multer(uploadConfing.upload("./tmp"));
 
 // -- USER ROTES --
 router.get('/all/users', isAuthenticated, new AllUserController().handle);
@@ -28,5 +31,8 @@ router.delete('/users', isAuthenticated, new DeleteUserController().handle);
 
 // -- AUTH LOGIN -- 
 router.post('/session', new AuthUserController().handle);
+
+// -- CATEGORY ROTES --
+
 
 export { router };

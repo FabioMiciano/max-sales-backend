@@ -29,9 +29,6 @@ model Category {
   id String @id @default(uuid())
   title String
   info String
-  type String
-  link_type String
-  link_action String
   image String?
 
   created_at DateTime? @default(now())
