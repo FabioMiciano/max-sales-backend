@@ -118,13 +118,25 @@ class GetPurchaseByUserService {
             available: true
         }
 
+        const purchaseSalesJson = { 
+            id: "", 
+            title: "", 
+            info: "", 
+            type: "help", 
+            link_type: "phone", 
+            link_action: "https://api.whatsapp.com/send?phone=5511995066617", 
+            image: "sales",
+            available: true
+
+        }
+
         const purchaseSACJson = { 
             id: "", 
             title: "", 
             info: "", 
             type: "help", 
             link_type: "phone", 
-            link_action: "https://api.whatsapp.com/send?phone=5511937414931", 
+            link_action: "https://api.whatsapp.com/send?phone=5511939466858", 
             image: "sac",
             available: true
 
@@ -132,6 +144,7 @@ class GetPurchaseByUserService {
 
         purchases.push(purchaseLogoJson);
         purchases.push(purchaseAboutUsJson);
+        purchases.push(purchaseSalesJson);
         purchases.push(purchaseSACJson);
 
         return purchases;
