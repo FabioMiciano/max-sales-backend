@@ -1,7 +1,7 @@
 import { Category } from '@prisma/client';
 import prismaClient from '../../../prisma';
 
-class GetPurchaseByUserService {
+class GetHomeByUserService {
     async execute(user_id: string) {
 
         const defaultHome = this.createDefaultHomeJson();
@@ -61,7 +61,7 @@ class GetPurchaseByUserService {
         defaultHome.map(function(value){ finalJSon.push(value) });
         availableCategories.map(function(value){ finalJSon.push(value) });
         notAvailableCategories.map(function(value){ finalJSon.push(value) });
-
+        
         return finalJSon;
     }
 
@@ -151,4 +151,4 @@ class GetPurchaseByUserService {
     }
 }
 
-export { GetPurchaseByUserService };
+export { GetHomeByUserService };

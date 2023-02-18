@@ -1,11 +1,11 @@
 import { Request, Response } from 'express'
-import { GetPurchaseByUserService } from '../../service/purchase/GetPurchaseByUserService';
+import { GetHomeByUserService } from '../../service/purchase/GetHomeByUserService';
 
-class GetPurchaseByUserController {
+class GetHomeByUserController {
     async handle(req: Request, res: Response) {
         const user_id = req.user_id;
 
-        const service = new GetPurchaseByUserService();
+        const service = new GetHomeByUserService();
 
         const purchase = await service.execute(user_id);
 
@@ -13,4 +13,4 @@ class GetPurchaseByUserController {
     }
 }
 
-export { GetPurchaseByUserController };
+export { GetHomeByUserController };

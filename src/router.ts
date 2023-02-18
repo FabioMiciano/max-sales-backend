@@ -32,10 +32,11 @@ import { DeletePurchaseController } from './controller/purchase/DeletePurchaseCo
 import { GetAllPurchasesController } from './controller/purchase/GetAllPurchasesController';
 
 // -- IMPORT SERVER DRIVEN UI --
-import { GetPurchaseByUserController } from './controller/purchase/GetPurchaseByUserController';
+import { GetHomeByUserController } from './controller/purchase/GetHomeByUserController';
 
 import multer from 'multer';
 import uploadConfing from './config/multer';
+import { GetPurchasesAvailableByUserController } from './controller/purchase/GetPurchasesAvailableByUserController';
 
 const router = Router();
 const upload = multer(uploadConfing.upload("./tmp"));
@@ -65,10 +66,11 @@ router.delete('/products', isAuthenticated, new DeleteProductController().handle
 
 // -- PRUCHASE ROTES --
 router.get('/purchases', isAuthenticated, new GetAllPurchasesController().handle);
+router.get('/users/purchases', isAuthenticated, new GetPurchasesAvailableByUserController().handle)
 router.post('/purchases', isAuthenticated, new CreatePurchaseController().handle);
 router.delete('/purchases', isAuthenticated, new DeletePurchaseController().handle);
 
 // -- SERVER DRIVEN UI  ROTES --
-router.get('/home', isAuthenticated, new GetPurchaseByUserController().handle);
+router.get('/home', isAuthenticated, new GetHomeByUserController().handle);
 
 export { router };
