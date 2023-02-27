@@ -24,6 +24,7 @@ import { UpdateCategoryController } from './controller/category/UpdateCategoryCo
 import { CreateProductController } from './controller/product/CreateProductController';
 import { DeleteProductController } from './controller/product/DeleteProductController';
 import { GetAllProductsController } from './controller/product/GetAllProductsController';
+import { GetProductByIdController } from './controller/product/GetProductByIdController';
 import { UpdateProductController } from './controller/product/UpdateProductController';
 
 // -- IMPORT PURCHASES --
@@ -60,6 +61,7 @@ router.delete('/categories', isAuthenticated, new DeleteCategoryController().han
 
 // -- PRODUCTS ROTES --
 router.get('/products', isAuthenticated, new GetAllProductsController().handle);
+router.get('/products/:id', isAuthenticated, new GetProductByIdController().handle);
 router.post('/products', upload.single('file'), isAuthenticated, new CreateProductController().handle);
 router.put('/products', isAuthenticated, new UpdateProductController().handle);
 router.delete('/products', isAuthenticated, new DeleteProductController().handle);
