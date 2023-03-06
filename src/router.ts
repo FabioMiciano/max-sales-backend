@@ -5,6 +5,7 @@ import { isAuthenticated } from './middlewares/isAuthenticated';
 
 // -- IMPORT AUTH
 import { AuthUserController } from './controller/auth/AuthUserController';
+import { AuthAdminUserController } from './controller/auth/AuthAdminUserController';
 
 // -- IMPORT ROUTES --
 import { CreateUserController } from './controller/user/CreateUserController';
@@ -52,6 +53,7 @@ router.delete('/users', isAuthenticated, new DeleteUserController().handle);
 
 // -- AUTH LOGIN -- 
 router.post('/session', new AuthUserController().handle);
+router.post('/admin/session', new AuthAdminUserController().handle);
 
 // -- CATEGORIES ROTES --
 router.get('/categories', isAuthenticated, new GetAllCategoryController().handle);
