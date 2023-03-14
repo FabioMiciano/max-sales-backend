@@ -20,6 +20,7 @@ class UpdateProductService {
                 data: {
                     title: title,
                     info: info,
+                    link_type: link_type,
                     link_action: link_action,
                     category_id: category_id
                 }
