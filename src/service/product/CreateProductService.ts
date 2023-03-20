@@ -18,7 +18,8 @@ class CreateProductService {
 
         const useralreadyExists = await prismaClient.product.findFirst({
             where:{
-                title: title
+                title: title,
+                category_id: category_id
             }
         })
 
