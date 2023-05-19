@@ -36,9 +36,14 @@ import { GetAllPurchasesController } from './controller/purchase/GetAllPurchases
 // -- IMPORT SERVER DRIVEN UI --
 import { GetHomeByUserController } from './controller/purchase/GetHomeByUserController';
 
+import { SessionAppleController } from './controller/apple/SessionAppleController';
+import { CreateAppleUserController } from './controller/apple/CreateAppleUserController';
+
+import { GetPurchasesAvailableByUserController } from './controller/purchase/GetPurchasesAvailableByUserController';
+
 import multer from 'multer';
 import uploadConfing from './config/multer';
-import { GetPurchasesAvailableByUserController } from './controller/purchase/GetPurchasesAvailableByUserController';
+
 
 const router = Router();
 const upload = multer(uploadConfing.upload("./tmp"));
@@ -76,5 +81,10 @@ router.delete('/purchases', isAuthenticated, new DeletePurchaseController().hand
 
 // -- SERVER DRIVEN UI  ROTES --
 router.get('/home', isAuthenticated, new GetHomeByUserController().handle);
+
+
+// -- SERVER APPLE --
+router.post('/newSession', new SessionAppleController().handle);
+router.post('/newUser', new CreateAppleUserController().handle);
 
 export { router };
