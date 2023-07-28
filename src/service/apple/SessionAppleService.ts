@@ -2,7 +2,7 @@ import prismaClient from "../../../prisma";
 
 class SessionAppleService {
     async execute(version: string) {
-        const current_version = 1
+        const current_version = 5
 
         if (parseInt(version) === current_version) {
             const appleTestJson = {
