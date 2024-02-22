@@ -144,7 +144,7 @@ class GetHomeByUserService {
 
         purchases.push(purchaseLogoJson);
         purchases.push(purchaseAboutUsJson);
-        purchases.push(purchaseSalesJson);
+        // purchases.push(purchaseSalesJson);
         purchases.push(purchaseSACJson);
 
         return purchases;
